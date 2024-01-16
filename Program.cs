@@ -10,6 +10,7 @@ namespace TheCarTolls
         {
             Car car = new Car();
             Motorbike motorbike = new Motorbike();
+            Tractor tractor = new Tractor();
 
             // Exempel på hur du kan använda IVehicle-interface
             Vehicle someVehicle = car; // Car implementerar IVehicle
@@ -22,10 +23,14 @@ namespace TheCarTolls
             // Anropa GetTollFee-metoden
             int totalTollCar = tollCalculator.GetTollFee(car, dates);
             int totalTollMotorbike = tollCalculator.GetTollFee(motorbike, dates);
+            int totalTollTractor = tollCalculator.GetTollFee(tractor, dates);
+
 
             // Visa resultat
             Console.WriteLine($"Total toll for Car: {totalTollCar} kr");
             Console.WriteLine($"Total toll for Motorbike: {totalTollMotorbike} kr");
+            Console.WriteLine($"Total toll for Tractor: {totalTollTractor} kr");
+
 
             // Testfall 1: Skattefri dag
             DateTime[] exemptDay = { new DateTime(2023, 12, 25, 12, 0, 0) };
