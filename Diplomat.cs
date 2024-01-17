@@ -7,7 +7,7 @@ using TollFeeCalculator;
 
 namespace TheCarTolls
 {
-    public class Diplomat : Vehicle
+    public class Diplomat : IVehicle
     {
         public string GetVehicleType()
         {

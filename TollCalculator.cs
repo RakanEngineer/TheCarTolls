@@ -16,7 +16,7 @@ public class TollCalculator
     private const int MaxTotalFee = 60;
     private static readonly string[] TollFreeVehicleTypes = { "Motorbike", "Tractor", "Emergency", "Diplomat", "Foreign", "Military" };
 
-    public int GetTollFee(Vehicle vehicle, DateTime[] dates)
+    public int GetTollFee(IVehicle vehicle, DateTime[] dates)
     {
         DateTime intervalStart = dates[0];
         int totalFee = 0;
@@ -42,13 +42,13 @@ public class TollCalculator
         return totalFee > MaxTotalFee ? MaxTotalFee : totalFee;
     }
 
-    private bool IsTollFreeVehicle(Vehicle vehicle)
+    private bool IsTollFreeVehicle(IVehicle vehicle)
     {
         if (vehicle == null) return false;
         string vehicleType = vehicle.GetVehicleType();
         return TollFreeVehicleTypes.Contains(vehicleType);
     }
-    public int GetTollFee(DateTime date, Vehicle vehicle)
+    public int GetTollFee(DateTime date, IVehicle vehicle)
     {
         if (IsTollFreeDate(date) || IsTollFreeVehicle(vehicle)) return 0;
 

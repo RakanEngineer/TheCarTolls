@@ -17,7 +17,7 @@ namespace TheCarTolls
             Military military = new Military();
 
             // Exempel på hur du kan använda IVehicle-interface
-            Vehicle someVehicle = car; // Car implementerar IVehicle
+            IVehicle someVehicle = car; // Car implementerar IVehicle
             Console.WriteLine($"Vehicle type: {someVehicle.GetVehicleType()}");
 
             // Exempel på hur du kan använda TollCalculator

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TollFeeCalculator
 {
-    public class Foreign : Vehicle
+    public class Foreign : IVehicle
     {   
         public string GetVehicleType()
         {
