@@ -13,6 +13,7 @@ namespace TheCarTolls
             Tractor tractor = new Tractor();
             Emergency emergency = new Emergency();
             Diplomat diplomat = new Diplomat();
+            Foreign foreign = new Foreign();
 
             // Exempel på hur du kan använda IVehicle-interface
             Vehicle someVehicle = car; // Car implementerar IVehicle
@@ -28,6 +29,7 @@ namespace TheCarTolls
             int totalTollTractor = tollCalculator.GetTollFee(tractor, dates);
             int totalTollEmergency = tollCalculator.GetTollFee(emergency, dates);
             int totalTollDiplomat = tollCalculator.GetTollFee(diplomat, dates);
+            int totalTollForeign = tollCalculator.GetTollFee(foreign, dates);
 
             // Visa resultat
             Console.WriteLine($"Total toll for Car: {totalTollCar} kr");
@@ -35,6 +37,8 @@ namespace TheCarTolls
             Console.WriteLine($"Total toll for Tractor: {totalTollTractor} kr");
             Console.WriteLine($"Total toll for Emergency: {totalTollEmergency} kr");
             Console.WriteLine($"Total toll for Diplomat: {totalTollDiplomat} kr");
+            Console.WriteLine($"Total toll for Foreign: {totalTollForeign} kr");
+
 
             // Testfall 1: Skattefri dag
             DateTime[] exemptDay = { new DateTime(2023, 12, 25, 12, 0, 0) };
