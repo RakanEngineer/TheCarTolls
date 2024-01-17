@@ -14,6 +14,7 @@ namespace TheCarTolls
             Emergency emergency = new Emergency();
             Diplomat diplomat = new Diplomat();
             Foreign foreign = new Foreign();
+            Military military = new Military();
 
             // Exempel på hur du kan använda IVehicle-interface
             Vehicle someVehicle = car; // Car implementerar IVehicle
@@ -30,6 +31,7 @@ namespace TheCarTolls
             int totalTollEmergency = tollCalculator.GetTollFee(emergency, dates);
             int totalTollDiplomat = tollCalculator.GetTollFee(diplomat, dates);
             int totalTollForeign = tollCalculator.GetTollFee(foreign, dates);
+            int totalTollMilitary = tollCalculator.GetTollFee(military, dates);
 
             // Visa resultat
             Console.WriteLine($"Total toll for Car: {totalTollCar} kr");
@@ -38,6 +40,7 @@ namespace TheCarTolls
             Console.WriteLine($"Total toll for Emergency: {totalTollEmergency} kr");
             Console.WriteLine($"Total toll for Diplomat: {totalTollDiplomat} kr");
             Console.WriteLine($"Total toll for Foreign: {totalTollForeign} kr");
+            Console.WriteLine($"Total toll for Military: {totalTollMilitary} kr");
 
 
             // Testfall 1: Skattefri dag
