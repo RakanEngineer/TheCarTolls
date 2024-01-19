@@ -108,6 +108,11 @@ public class TollCalculator
                 new DateTime(year, 12, 26),                 // Annandag jul
                 new DateTime(year, 12, 31)                  // Dagen före Nyårsdagen
         };
+        // Lägg till alla dagar i juli månad
+        for (int day = 1; day <= DateTime.DaysInMonth(year, 7); day++)
+        {
+            holidays.Add(new DateTime(year, 7, day));
+        }
 
         return holidays;
     }
@@ -139,36 +144,6 @@ public class TollCalculator
         DateTime currentTime = DateTime.Today.AddHours(hour).AddMinutes(minute);
 
         return currentTime >= startTime && currentTime <= endTime;
-    }
-    private static List<DateTime> GetSwedishHolidays(int year)
-    {
-        List<DateTime> holidays = new List<DateTime>
-            {
-                new DateTime(year, 1, 1),                   // Nyårsdagen
-                new DateTime(year, 1, 5),                   // Dagen före Trettondedag jul
-                new DateTime(year, 1, 6),                   // Trettondedag jul
-                CalculateEasterSunday(year).AddDays(-3),    // Dagen före Långfredagen
-                CalculateEasterSunday(year).AddDays(-2),    // Långfredagen
-                CalculateEasterSunday(year),                // Påskdagen
-                CalculateEasterSunday(year).AddDays(1),     // Annandag påsk
-                new DateTime(year, 4, 30),                  // Dagen före Första maj
-                new DateTime(year, 5, 1),                   // Första maj
-                CalculateAscensionDay(year).AddDays(-1),    // Dagen före Kristi himmelsfärds dag
-                CalculateAscensionDay(year),                // Kristi himmelsfärds dag
-                CalculatePentecost(year),                   // Pingstdagen
-                new DateTime (year, 6, 5),                  // Dagen före Sveriges nationaldag
-                new DateTime (year, 6, 6),                  // Sveriges nationaldag
-                CalculateMidsummerEve(year),                // Midsommarafton,Dagen före Midsommardagen
-                CalculateMidsummerEve(year).AddDays(1),     // Midsommardagen
-                new DateTime(year, 7, 1),
-                CalculateAllSaintsDay(year),                // Alla helgons dag
-                new DateTime(year, 12, 24),                 // Julafton,Dagen före Juldagen
-                new DateTime(year, 12, 25),                 // Juldagen
-                new DateTime(year, 12, 26),                 // Annandag jul
-                new DateTime(year, 12, 31)                  // Dagen före Nyårsdagen
-        };
-
-        return holidays;
     }
     private static DateTime CalculateEasterSunday(int year)
     {
