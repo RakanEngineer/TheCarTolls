@@ -19,4 +19,5 @@ Jag har gjort följande förbättringar och tillägg:
 4. Förenklad hantering av helgdagar: Jag har infört en separat metod IsTodayHoliday för att kolla om en given dag är en helgdag. Denna metod använder en lista med helgdagar som genereras med hjälp av GetHolidays-metoden.
 5. Refaktorering: Jag har refaktorerat kod för att öka läsbarheten och underhållbarheten, inklusive att extrahera gemensamma kodsnuttar till separata metoder.
 6. Kommentarer: Jag har lagt till kommentarer som förklarar vad varje del av koden gör och ger exempel på olika testfall.
+7. Jag användar GetType, typeof för metoden GetVehicleType som returnerar en string. Jag tycker det är lite onödigt att jobba med string, så jag använder GetType, typeof.
 Dessa förändringar gör koden mer flexibel, lättare att underhålla och mer utbyggbar med nya fordonstyper eller funktioner i framtiden. Jag har också inkluderat utförliga testfall för att säkerställa att koden fungerar korrekt i olika scenarier.

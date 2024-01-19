@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using TheCarTolls;
 using TollFeeCalculator;
 
 public class TollCalculator
@@ -14,7 +15,15 @@ public class TollCalculator
      */
     private static readonly int[] TollRates = { 8, 13, 18 };
     private const int MaxTotalFee = 60;
-    private static readonly string[] TollFreeVehicleTypes = { "Motorbike", "Tractor", "Emergency", "Diplomat", "Foreign", "Military" };
+    private static readonly Type[] TollFreeVehicleTypes = 
+        {
+        typeof(Motorbike),
+        typeof(Tractor),
+        typeof(Emergency),
+        typeof(Diplomat),
+        typeof(Foreign),
+        typeof(Military) 
+    };
 
     public int GetTollFee(IVehicle vehicle, DateTime[] dates)
     {
@@ -45,8 +54,8 @@ public class TollCalculator
     private bool IsTollFreeVehicle(IVehicle vehicle)
     {
         if (vehicle == null) return false;
-        string vehicleType = vehicle.GetVehicleType();
-        return TollFreeVehicleTypes.Contains(vehicleType);
+        Type vehicleType = vehicle.GetVehicleType();
+        return TollFreeVehicleTypes.Select(type => type.FullName).Contains(vehicleType.FullName);
     }
     public int GetTollFee(DateTime date, IVehicle vehicle)
     {

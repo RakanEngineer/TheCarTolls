@@ -8,9 +8,9 @@ namespace TollFeeCalculator
 {
     public class Car : IVehicle
     {
-        public String GetVehicleType()
+        public Type GetVehicleType()
         {
-            return "Car";
+            return typeof (Car);
         }
     }
 }

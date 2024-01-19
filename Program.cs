@@ -35,29 +35,29 @@ namespace TheCarTolls
             int totalTollMilitary = tollCalculator.GetTollFee(military, dates);
 
             // Visa resultat
-            Console.WriteLine($"Total toll for today: {dates[0]} for Car: {totalTollCar} kr");
-            Console.WriteLine($"Total toll for today: {dates[0]} for Motorbike: {totalTollMotorbike} kr");
-            Console.WriteLine($"Total toll for today: {dates[0]} for Tractor: {totalTollTractor} kr");
-            Console.WriteLine($"Total toll for today: {dates[0]} for Emergency: {totalTollEmergency} kr");
-            Console.WriteLine($"Total toll for today: {dates[0]} for Diplomat: {totalTollDiplomat} kr");
-            Console.WriteLine($"Total toll for today: {dates[0]} for Foreign: {totalTollForeign} kr");
-            Console.WriteLine($"Total toll for today: {dates[0]} for Military: {totalTollMilitary} kr");
+            Console.WriteLine($"Total toll for Car: for today: {dates[0]} = {totalTollCar} kr");
+            Console.WriteLine($"Total toll for Motorbike: for today: {dates[0]} = {totalTollMotorbike} kr");
+            Console.WriteLine($"Total toll for Tractor: for today: {dates[0]} = {totalTollTractor} kr");
+            Console.WriteLine($"Total toll for Emergency: for today: {dates[0]} = {totalTollEmergency} kr");
+            Console.WriteLine($"Total toll for Diplomat: for today: {dates[0]} = {totalTollDiplomat} kr");
+            Console.WriteLine($"Total toll for Foreign: for today: {dates[0]} = {totalTollForeign} kr");
+            Console.WriteLine($"Total toll for Military: for today: {dates[0]} = {totalTollMilitary} kr");
 
 
             // Testfall 1: Skattefri dag
             DateTime[] exemptDay = { new DateTime(2024, 1, 1, 8, 0, 0) };
             int toll1 = tollCalculator.GetTollFee(car, exemptDay);
-            Console.WriteLine($"Testfall 1: Skattefri dag: Datum är = {exemptDay[0]},Idag är en helgdag i Sverige! Trängselskatt = {toll1} kr");
+            Console.WriteLine($"Testfall 1: Skattefri dag: Datum är {exemptDay[0]}, Den dag är en helgdag i Sverige! Trängselskatt = {toll1} kr");
 
             // Testfall 2: Skattefri tidpunkt
             DateTime[] exemptTime = { new DateTime(2024, 1, 2, 3, 0, 0) };
             int toll2 = tollCalculator.GetTollFee(car, exemptTime);
-            Console.WriteLine($"Testfall 2: Skattefri tidpunkt: Tidpunkt är = {exemptTime[0]}, Trängselskatt = {toll2} kr");
+            Console.WriteLine($"Testfall 2: Skattefri tidpunkt: Tidpunkt är {exemptTime[0]}, Trängselskatt = {toll2} kr");
 
             // Testfall 3: Normal tidpunkt för car
             DateTime[] normalTime = { new DateTime(2024, 1, 2, 8, 0, 0) };
             int toll3 = tollCalculator.GetTollFee(car, normalTime);
-            Console.WriteLine($"Testfall 3: Normal tidpunkt för car = {normalTime[0]}: Trängselskatt = {toll3} kr");
+            Console.WriteLine($"Testfall 3: Normal tidpunkt för car är {normalTime[0]}: Trängselskatt = {toll3} kr");
 
             // Testfall 4: Max Total Fee för car
             DateTime[] multiTime = { DateTime.Now, new DateTime(2024, 1, 2, 7, 0, 0), new DateTime(2024, 1, 2, 8, 0, 0),
@@ -90,15 +90,15 @@ namespace TheCarTolls
 
             // Testfall 5: Normal tidpunkt för motorbike
             int toll5 = tollCalculator.GetTollFee(motorbike, normalTime);
-            Console.WriteLine($"Testfall 5: Normal tidpunkt för motorbike: Trängselskatt = {toll5} kr");
+            Console.WriteLine($"Testfall 5: Normal tidpunkt för motorbike är {normalTime[0]}: Trängselskatt = {toll5} kr");
 
             // Testfall 6: Normal tidpunkt för tractor
             int toll6 = tollCalculator.GetTollFee(tractor, normalTime);
-            Console.WriteLine($"Testfall 6: Normal tidpunkt för tractor: Trängselskatt = {toll6} kr");
+            Console.WriteLine($"Testfall 6: Normal tidpunkt för tractor är {normalTime[0]}: Trängselskatt = {toll6} kr");
 
             // Testfall 7: Normal tidpunkt för emergency
             int toll7 = tollCalculator.GetTollFee(emergency, normalTime);
-            Console.WriteLine($"Testfall 7: Normal tidpunkt för emergency: Trängselskatt = {toll7} kr");
+            Console.WriteLine($"Testfall 7: Normal tidpunkt för emergency är {normalTime[0]}: Trängselskatt = {toll7} kr");
 
         }       
        

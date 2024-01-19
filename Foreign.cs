@@ -8,9 +8,9 @@ namespace TollFeeCalculator
 {
     public class Foreign : IVehicle
     {   
-        public string GetVehicleType()
+        public Type GetVehicleType()
         {
-            return "Foreign";
+            return typeof(Foreign);
         }
     }
 }

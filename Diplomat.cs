@@ -9,9 +9,9 @@ namespace TheCarTolls
 {
     public class Diplomat : IVehicle
     {
-        public string GetVehicleType()
+        public Type GetVehicleType()
         {
-            return "Diplomat";
+            return typeof(Diplomat);
         }
     }
 }

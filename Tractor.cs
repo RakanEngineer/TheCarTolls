@@ -8,9 +8,9 @@ namespace TollFeeCalculator
 {
     public class Tractor : IVehicle
     {
-        public string GetVehicleType() 
+        public Type GetVehicleType() 
         {
-            return "Tractor";
+            return typeof(Tractor);
         }
     }
 }
