@@ -47,12 +47,12 @@ namespace TheCarTolls
             // Testfall 1: Skattefri dag
             DateTime[] exemptDay = { new DateTime(2024, 1, 1, 8, 0, 0) };
             int toll1 = tollCalculator.GetTollFee(car, exemptDay);
-            Console.WriteLine($"Testfall 1: Datum är = {exemptDay[0]},Idag är en helgdag i Sverige!Skattefri dag:Trängselskatt = {toll1} kr");
+            Console.WriteLine($"Testfall 1: Skattefri dag: Datum är = {exemptDay[0]},Idag är en helgdag i Sverige! Trängselskatt = {toll1} kr");
 
             // Testfall 2: Skattefri tidpunkt
             DateTime[] exemptTime = { new DateTime(2024, 1, 2, 3, 0, 0) };
             int toll2 = tollCalculator.GetTollFee(car, exemptTime);
-            Console.WriteLine($"Testfall 2: Tidpunkt är = {exemptTime[0]}, Skattefri tidpunkt:Trängselskatt = {toll2} kr");
+            Console.WriteLine($"Testfall 2: Skattefri tidpunkt: Tidpunkt är = {exemptTime[0]}, Trängselskatt = {toll2} kr");
 
             // Testfall 3: Normal tidpunkt för car
             DateTime[] normalTime = { new DateTime(2024, 1, 2, 8, 0, 0) };
