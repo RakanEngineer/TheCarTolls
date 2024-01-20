@@ -96,22 +96,21 @@ public class TollCalculator
             {
                 new DateTime(year, 1, 1),                   // Nyårsdagen
                 new DateTime(year, 1, 5),                   // Dagen före Trettondedag jul
-                new DateTime(year, 1, 6),                   // Trettondedag jul
+                new DateTime(year, 1, 6),                   // * Trettondedag jul, lördag
                 CalculateEasterSunday(year).AddDays(-3),    // Dagen före Långfredagen
                 CalculateEasterSunday(year).AddDays(-2),    // Långfredagen
-                CalculateEasterSunday(year),                // Påskdagen
+                //CalculateEasterSunday(year),              // * Påskdagen, Alltid söndag
                 CalculateEasterSunday(year).AddDays(1),     // Annandag påsk
                 new DateTime(year, 4, 30),                  // Dagen före Första maj
                 new DateTime(year, 5, 1),                   // Första maj
                 CalculateAscensionDay(year).AddDays(-1),    // Dagen före Kristi himmelsfärds dag
                 CalculateAscensionDay(year),                // Kristi himmelsfärds dag
-                CalculatePentecost(year),                   // Pingstdagen
+                //CalculatePentecost(year),                   // * Pingstdagen, Alltid söndag
                 new DateTime (year, 6, 5),                  // Dagen före Sveriges nationaldag
                 new DateTime (year, 6, 6),                  // Sveriges nationaldag
                 CalculateMidsummerEve(year),                // Midsommarafton,Dagen före Midsommardagen
-                CalculateMidsummerEve(year).AddDays(1),     // Midsommardagen
-                new DateTime(year, 7, 1),
-                CalculateAllSaintsDay(year),                // Alla helgons dag
+                //CalculateMidsummerEve(year).AddDays(1),     // * Midsommardagen, Alltid lördag
+                CalculateAllSaintsDay(year).AddDays(-1),    // Dagen före Alla helgons dag(fre)
                 new DateTime(year, 12, 24),                 // Julafton,Dagen före Juldagen
                 new DateTime(year, 12, 25),                 // Juldagen
                 new DateTime(year, 12, 26),                 // Annandag jul
@@ -192,14 +191,7 @@ public class TollCalculator
         DateTime ascensionDay = easterSunday.AddDays(39);
         return ascensionDay;
     }
-
-    private static DateTime CalculatePentecost(int year)
-    {
-        // Pingstdagen infaller alltid 49 dagar efter påsk
-        DateTime easterSunday = CalculateEasterSunday(year);
-        DateTime pentecost = easterSunday.AddDays(49);
-        return pentecost;
-    }
+   
     private static DateTime CalculateAllSaintsDay(int year)
     {
         DateTime firstNovember = new DateTime(year, 11, 1);

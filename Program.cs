@@ -60,31 +60,13 @@ namespace TheCarTolls
             Console.WriteLine($"Testfall 3: Normal tidpunkt för car är {normalTime[0]}: Trängselskatt = {toll3} kr");
 
             // Testfall 4: Max Total Fee för car
-            DateTime[] multiTime = { DateTime.Now, new DateTime(2024, 1, 2, 7, 0, 0), new DateTime(2024, 1, 2, 8, 0, 0),
-            DateTime.Now.AddHours(1),
-            DateTime.Now.AddHours(2),
-            DateTime.Now.AddHours(3),
-            DateTime.Now.AddHours(4),
-            DateTime.Now.AddHours(5),
-            DateTime.Now.AddHours(6),
-            DateTime.Now.AddHours(7),
-            DateTime.Now.AddHours(8),
-            DateTime.Now.AddHours(9),
-            DateTime.Now.AddHours(10),
-            DateTime.Now.AddHours(11),
-            DateTime.Now.AddHours(12),
-            DateTime.Now.AddHours(13),
-            DateTime.Now.AddHours(14),
-            DateTime.Now.AddHours(15),
-            DateTime.Now.AddHours(16),
-            DateTime.Now.AddHours(17),
-            DateTime.Now.AddHours(18),
-            DateTime.Now.AddHours(19),
-            DateTime.Now.AddHours(20),
-            DateTime.Now.AddHours(21),
-            DateTime.Now.AddHours(22),
-            DateTime.Now.AddHours(23),
-              };
+            DateTime[] multiTime = new DateTime[24];
+            DateTime currentDate = new DateTime(2024, 1, 22); 
+
+            for (int hour = 0; hour < 24; hour++)
+            {
+                multiTime[hour] = currentDate.AddHours(hour);
+            }
             int toll4 = tollCalculator.GetTollFee(car, multiTime);
             Console.WriteLine($"Testfall 4: Max Total Fee, Total tullavgift: Trängselskatt = {toll4} kr");
 
