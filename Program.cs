@@ -6,7 +6,6 @@ namespace TheCarTolls
 {
     class program
     {
-
         static void Main(string[] args)
         {
             Car car = new Car();
@@ -24,7 +23,6 @@ namespace TheCarTolls
             // Exempel på hur du kan använda TollCalculator
             TollCalculator tollCalculator = new TollCalculator();
             DateTime[] dates = { DateTime.Now, DateTime.Now.AddHours(1), DateTime.Now.AddHours(2) };
-
             // Anropa GetTollFee-metoden
             int totalTollCar = tollCalculator.GetTollFee(car, dates);
             int totalTollMotorbike = tollCalculator.GetTollFee(motorbike, dates);
@@ -80,9 +78,8 @@ namespace TheCarTolls
 
             // Testfall 7: Normal tidpunkt för emergency
             int toll7 = tollCalculator.GetTollFee(emergency, normalTime);
-            Console.WriteLine($"Testfall 7: Normal tidpunkt för emergency är {normalTime[0]}: Trängselskatt = {toll7} kr");
+            Console.WriteLine($"Testfall 7: Normal tidpunkt för emergency är {normalTime[0]}: Trängselskatt = {toll7} kr");           
 
         }       
-       
     }
 }

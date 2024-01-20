@@ -96,7 +96,7 @@ public class TollCalculator
             {
                 new DateTime(year, 1, 1),                   // Nyårsdagen
                 new DateTime(year, 1, 5),                   // Dagen före Trettondedag jul
-                new DateTime(year, 1, 6),                   // * Trettondedag jul, lördag
+                new DateTime(year, 1, 6),                   // * Trettondedag jul,
                 CalculateEasterSunday(year).AddDays(-3),    // Dagen före Långfredagen
                 CalculateEasterSunday(year).AddDays(-2),    // Långfredagen
                 //CalculateEasterSunday(year),              // * Påskdagen, Alltid söndag
@@ -124,26 +124,6 @@ public class TollCalculator
 
         return holidays;
     }
-
-    //private static bool IsDayHoliday(DateTime date)
-    //{
-    //    int year = date.Year;
-    //    int month = date.Month;
-    //    int day = date.Day;
-
-    //    if (month == 1 && (day == 1 || day == 6) ||
-    //           month == 3 && (day == 28 || day == 29) ||
-    //           month == 4 && (day == 1 || day == 30) ||
-    //           month == 5 && (day == 1 || day == 8 || day == 9) ||
-    //           month == 6 && (day == 5 || day == 6 || day == 21) ||
-    //           month == 7 ||
-    //           month == 11 && day == 1 ||
-    //           month == 12 && (day == 24 || day == 25 || day == 26 || day == 31))
-    //    {
-    //        return true;
-    //    }
-    //    return false;
-    //}
 
     private static bool IsWithinTimeInterval(int hour, int minute, int startHour, int startMinute, int endHour, int endMinute)
     {
