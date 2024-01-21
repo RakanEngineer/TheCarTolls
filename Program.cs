@@ -66,7 +66,7 @@ namespace TheCarTolls
                 multiTime[hour] = currentDate.AddHours(hour);
             }
             int toll4 = tollCalculator.GetTollFee(car, multiTime);
-            Console.WriteLine($"Testfall 4: Max Total Fee, Total tullavgift: Trängselskatt = {toll4} kr");
+            Console.WriteLine($"Testfall 4: Max Total Fee för {multiTime[0]}, Total tullavgift: Trängselskatt = {toll4} kr");
 
             // Testfall 5: Normal tidpunkt för motorbike
             int toll5 = tollCalculator.GetTollFee(motorbike, normalTime);
