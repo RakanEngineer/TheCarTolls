@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using TollFeeCalculator;
+using Newtonsoft.Json;
+
 
 namespace TheCarTolls
 {
     class program
     {
-        static void Main(string[] args)
+        private static readonly HttpClient client = new HttpClient();
+
+        static async Task Main(string[] args)
         {
             Car car = new Car();
             Motorbike motorbike = new Motorbike();
@@ -15,6 +21,10 @@ namespace TheCarTolls
             Diplomat diplomat = new Diplomat();
             Foreign foreign = new Foreign();
             Military military = new Military();
+
+            // Skriv in registreringsnumret för bilen
+            string regNumber = "CRG019"; // Exempel på registreringsnummer
+            await GetVehicleInfoAsync(regNumber);
 
             // Exempel på hur du kan använda IVehicle-interface
             //IVehicle someVehicle = car; // Car implementerar IVehicle
@@ -33,15 +43,15 @@ namespace TheCarTolls
             int totalTollMilitary = tollCalculator.GetTollFee(military, dates);
 
             // Visa resultat
-            Console.WriteLine($"Total toll for Car: for today: {dates[0]} = {totalTollCar} kr");
+            Console.WriteLine($"Total toll for Car:       for today: {dates[0]} = {totalTollCar} kr");
             Console.WriteLine($"Total toll for Motorbike: for today: {dates[0]} = {totalTollMotorbike} kr");
-            Console.WriteLine($"Total toll for Tractor: for today: {dates[0]} = {totalTollTractor} kr");
+            Console.WriteLine($"Total toll for Tractor:   for today: {dates[0]} = {totalTollTractor} kr");
             Console.WriteLine($"Total toll for Emergency: for today: {dates[0]} = {totalTollEmergency} kr");
-            Console.WriteLine($"Total toll for Diplomat: for today: {dates[0]} = {totalTollDiplomat} kr");
-            Console.WriteLine($"Total toll for Foreign: for today: {dates[0]} = {totalTollForeign} kr");
-            Console.WriteLine($"Total toll for Military: for today: {dates[0]} = {totalTollMilitary} kr");
+            Console.WriteLine($"Total toll for Diplomat:  for today: {dates[0]} = {totalTollDiplomat} kr");
+            Console.WriteLine($"Total toll for Foreign:   for today: {dates[0]} = {totalTollForeign} kr");
+            Console.WriteLine($"Total toll for Military:  for today: {dates[0]} = {totalTollMilitary} kr");
 
-
+            Console.WriteLine("------------------------------------------------------------------------");
             // Testfall 1: Skattefri dag
             DateTime[] exemptDay = { new DateTime(2024, 1, 1, 8, 0, 0) };
             int toll1 = tollCalculator.GetTollFee(car, exemptDay);
@@ -80,6 +90,83 @@ namespace TheCarTolls
             int toll7 = tollCalculator.GetTollFee(emergency, normalTime);
             Console.WriteLine($"Testfall 7: Normal tidpunkt för emergency är {normalTime[0]}: Trängselskatt = {toll7} kr");           
 
-        }       
+        }
+        public class VehicleInfo
+        {    
+
+    
+        public string RegNo { get; set; }
+
+            
+        public string Make { get; set; }
+
+            
+        public string Model { get; set; }
+        public int Year { get; set; } // Lägg till fler egenskaper efter behov
+
+        }
+
+
+
+        private static async Task GetVehicleInfoAsync(string regNumber)
+        {
+            try
+            {
+                // Bygg URL:en för API-förfrågan
+                string url = $"https://biluppgifter.se/fordon/{regNumber}";
+
+                // Gör en GET-förfrågan
+                using (HttpClient client = new HttpClient())
+                {
+                    // Gör anropet till API:et
+                    HttpResponseMessage response = await client.GetAsync(url);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Läs svaret som en sträng
+                        string json = await response.Content.ReadAsStringAsync();
+
+                        // Deserialisera JSON-svaret till ett VehicleInfo-objekt
+                        VehicleInfo vehicleInfo = JsonConvert.DeserializeObject<VehicleInfo>(json);
+
+                        // Använd objektet
+                        Console.WriteLine($"Registreringsnummer: {vehicleInfo.RegNo}");
+                        Console.WriteLine($"Tillverkare: {vehicleInfo.Make}");
+                        Console.WriteLine($"Modell: {vehicleInfo.Model}");
+                        Console.WriteLine($"År: {vehicleInfo.Year}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Fel vid hämtning av data: {response.StatusCode}");
+                    }
+                }
+
+                //HttpResponseMessage response = await client.GetAsync(url);
+
+                //// Kontrollera om svaret är framgångsrikt
+                //if (response.IsSuccessStatusCode)
+                //{
+                //    // Läs innehållet som en sträng
+                //    string json = await response.Content.ReadAsStringAsync();
+                //    Console.WriteLine("Fordonsinformation:");
+                //    // Deserialisera JSON-svaret till ett VehicleInfo-objekt
+                //    VehicleInfo vehicleInfo = JsonConvert.DeserializeObject<VehicleInfo>(json);
+
+                //    // Skriv ut fordonsinformation
+                //    Console.WriteLine($"Registreringsnummer: {vehicleInfo.RegNo}");
+                //    Console.WriteLine($"Tillverkare: {vehicleInfo.Make}");
+                //    Console.WriteLine($"Modell: {vehicleInfo.Model}");
+                //    Console.WriteLine($"År: {vehicleInfo.Year}");
+                //}
+                //else
+                //{
+                //    Console.WriteLine($"Fel vid hämtning av fordonsinformation: {response.StatusCode}");
+                //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ett fel inträffade: {ex.Message}");
+            }
+        }
     }
 }

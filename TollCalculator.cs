@@ -15,14 +15,14 @@ public class TollCalculator
      */
     private static readonly int[] TollRates = { 8, 13, 18 };
     private const int MaxTotalFee = 60;
-    private static readonly Type[] TollFreeVehicleTypes = 
+    private static readonly Type[] TollFreeVehicleTypes =
         {
         typeof(Motorbike),
         typeof(Tractor),
         typeof(Emergency),
         typeof(Diplomat),
         typeof(Foreign),
-        typeof(Military) 
+        typeof(Military)
     };
 
     public int GetTollFee(IVehicle vehicle, DateTime[] dates)
@@ -171,7 +171,7 @@ public class TollCalculator
         DateTime ascensionDay = easterSunday.AddDays(39);
         return ascensionDay;
     }
-   
+
     private static DateTime CalculateAllSaintsDay(int year)
     {
         DateTime firstNovember = new DateTime(year, 11, 1);
