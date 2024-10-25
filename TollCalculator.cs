@@ -73,7 +73,7 @@ public class TollCalculator
         else if (IsWithinTimeInterval(hour, minute, 15, 30, 16, 59)) return TollRates[2];
         else if (IsWithinTimeInterval(hour, minute, 17, 0, 17, 59)) return TollRates[1];
         else if (IsWithinTimeInterval(hour, minute, 18, 0, 18, 29)) return TollRates[0];
-        else return 0;
+        else return 0;//18:30–05:59
     }
     private static Boolean IsTollFreeDate(DateTime date)
     {

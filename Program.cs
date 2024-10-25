@@ -45,9 +45,9 @@ namespace TheCarTolls
 
             // Visa resultat
             var date = DateTime.Now;
-            Console.WriteLine($"{Environment.NewLine}Hello, on {date:d} at {date:t}!");
+            Console.WriteLine($"{Environment.NewLine}Trängselskatt i Göteborg, on {date:d} at {date:t}!");
 
-            Console.WriteLine($"Total toll for Car:       for today Now: {dates[0]} = {totalTollCar} kr");
+            Console.WriteLine($"Total toll for Car:       for today Now: {dates[0]:f} = {totalTollCar} kr");
             Console.WriteLine($"Total toll for Motorbike: for today Now: {dates[0]} = {totalTollMotorbike} kr");
             Console.WriteLine($"Total toll for Tractor:   for today Now: {dates[0]} = {totalTollTractor} kr");
             Console.WriteLine($"Total toll for Emergency: for today Now: {dates[0]} = {totalTollEmergency} kr");
