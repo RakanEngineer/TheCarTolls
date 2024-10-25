@@ -51,23 +51,26 @@ namespace TheCarTolls
             Console.WriteLine($"Total toll for Foreign:   for today: {dates[0]} = {totalTollForeign} kr");
             Console.WriteLine($"Total toll for Military:  for today: {dates[0]} = {totalTollMilitary} kr");
 
-            Console.WriteLine("------------------------------------------------------------------------");
             // Testfall 1: Skattefri dag
+            Console.WriteLine("------------------------------------------------------------------------");
             DateTime[] exemptDay = { new DateTime(2024, 1, 1, 8, 0, 0) };
             int toll1 = tollCalculator.GetTollFee(car, exemptDay);
             Console.WriteLine($"Testfall 1: Skattefri dag: Datum är {exemptDay[0]}, Den dag är en helgdag i Sverige! Trängselskatt = {toll1} kr");
 
             // Testfall 2: Skattefri tidpunkt
+            Console.WriteLine("------------------------------------------------------------------------");
             DateTime[] exemptTime = { new DateTime(2024, 1, 2, 3, 0, 0) };
             int toll2 = tollCalculator.GetTollFee(car, exemptTime);
             Console.WriteLine($"Testfall 2: Skattefri tidpunkt: Tidpunkt är {exemptTime[0]}, Trängselskatt = {toll2} kr");
 
             // Testfall 3: Normal tidpunkt för car
+            Console.WriteLine("------------------------------------------------------------------------");
             DateTime[] normalTime = { new DateTime(2024, 1, 2, 8, 0, 0) };
             int toll3 = tollCalculator.GetTollFee(car, normalTime);
             Console.WriteLine($"Testfall 3: Normal tidpunkt för car är {normalTime[0]}: Trängselskatt = {toll3} kr");
 
             // Testfall 4: Max Total Fee för car
+            Console.WriteLine("------------------------------------------------------------------------");
             DateTime[] multiTime = new DateTime[24];
             DateTime currentDate = new DateTime(2024, 1, 22); 
 
@@ -79,14 +82,17 @@ namespace TheCarTolls
             Console.WriteLine($"Testfall 4: Max Total Fee för {multiTime[0]}, Total tullavgift: Trängselskatt = {toll4} kr");
 
             // Testfall 5: Normal tidpunkt för motorbike
+            Console.WriteLine("------------------------------------------------------------------------");
             int toll5 = tollCalculator.GetTollFee(motorbike, normalTime);
             Console.WriteLine($"Testfall 5: Normal tidpunkt för motorbike är {normalTime[0]}: Trängselskatt = {toll5} kr");
 
             // Testfall 6: Normal tidpunkt för tractor
+            Console.WriteLine("------------------------------------------------------------------------");
             int toll6 = tollCalculator.GetTollFee(tractor, normalTime);
             Console.WriteLine($"Testfall 6: Normal tidpunkt för tractor är {normalTime[0]}: Trängselskatt = {toll6} kr");
 
             // Testfall 7: Normal tidpunkt för emergency
+            Console.WriteLine("------------------------------------------------------------------------");
             int toll7 = tollCalculator.GetTollFee(emergency, normalTime);
             Console.WriteLine($"Testfall 7: Normal tidpunkt för emergency är {normalTime[0]}: Trängselskatt = {toll7} kr");           
 
@@ -137,7 +143,7 @@ namespace TheCarTolls
                     }
                     else
                     {
-                        Console.WriteLine($"Fel vid hämtning av data: {response.StatusCode}");
+                        //Console.WriteLine($"Fel vid hämtning av data: {response.StatusCode}");
                     }
                 }
 
@@ -165,7 +171,7 @@ namespace TheCarTolls
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ett fel inträffade: {ex.Message}");
+                //Console.WriteLine($"Ett fel inträffade: {ex.Message}");
             }
         }
     }
