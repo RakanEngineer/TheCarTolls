@@ -13,7 +13,7 @@ public class TollCalculator
      * @param dates   - date and time of all passes on one day
      * @return - the total toll fee for that day
      */
-    private static readonly int[] TollRates = { 8, 13, 18 };
+    private static readonly int[] TollRates = { 9, 16, 22 };
     private const int MaxTotalFee = 60;
     private static readonly Type[] TollFreeVehicleTypes =
         {

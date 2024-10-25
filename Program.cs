@@ -23,8 +23,8 @@ namespace TheCarTolls
             Military military = new Military();
 
             // Skriv in registreringsnumret för bilen
-            string regNumber = "CRG019"; // Exempel på registreringsnummer
-            await GetVehicleInfoAsync(regNumber);
+            //string regNumber = "CRG019"; // Exempel på registreringsnummer
+            //await GetVehicleInfoAsync(regNumber);
 
             // Exempel på hur du kan använda IVehicle-interface
             //IVehicle someVehicle = car; // Car implementerar IVehicle
