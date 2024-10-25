@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using TollFeeCalculator;
 using Newtonsoft.Json;
+using System.Xml.Linq;
 
 
 namespace TheCarTolls
@@ -43,13 +44,16 @@ namespace TheCarTolls
             int totalTollMilitary = tollCalculator.GetTollFee(military, dates);
 
             // Visa resultat
-            Console.WriteLine($"Total toll for Car:       for today: {dates[0]} = {totalTollCar} kr");
-            Console.WriteLine($"Total toll for Motorbike: for today: {dates[0]} = {totalTollMotorbike} kr");
-            Console.WriteLine($"Total toll for Tractor:   for today: {dates[0]} = {totalTollTractor} kr");
-            Console.WriteLine($"Total toll for Emergency: for today: {dates[0]} = {totalTollEmergency} kr");
-            Console.WriteLine($"Total toll for Diplomat:  for today: {dates[0]} = {totalTollDiplomat} kr");
-            Console.WriteLine($"Total toll for Foreign:   for today: {dates[0]} = {totalTollForeign} kr");
-            Console.WriteLine($"Total toll for Military:  for today: {dates[0]} = {totalTollMilitary} kr");
+            var date = DateTime.Now;
+            Console.WriteLine($"{Environment.NewLine}Hello, on {date:d} at {date:t}!");
+
+            Console.WriteLine($"Total toll for Car:       for today Now: {dates[0]} = {totalTollCar} kr");
+            Console.WriteLine($"Total toll for Motorbike: for today Now: {dates[0]} = {totalTollMotorbike} kr");
+            Console.WriteLine($"Total toll for Tractor:   for today Now: {dates[0]} = {totalTollTractor} kr");
+            Console.WriteLine($"Total toll for Emergency: for today Now: {dates[0]} = {totalTollEmergency} kr");
+            Console.WriteLine($"Total toll for Diplomat:  for today Now: {dates[0]} = {totalTollDiplomat} kr");
+            Console.WriteLine($"Total toll for Foreign:   for today Now: {dates[0]} = {totalTollForeign} kr");
+            Console.WriteLine($"Total toll for Military:  for today Now: {dates[0]} = {totalTollMilitary} kr");
 
             // Testfall 1: Skattefri dag
             Console.WriteLine("------------------------------------------------------------------------");
@@ -65,7 +69,7 @@ namespace TheCarTolls
 
             // Testfall 3: Normal tidpunkt för car
             Console.WriteLine("------------------------------------------------------------------------");
-            DateTime[] normalTime = { new DateTime(2024, 1, 2, 8, 0, 0) };
+            DateTime[] normalTime = { new DateTime(2024, 1, 2, 6, 0, 0) };
             int toll3 = tollCalculator.GetTollFee(car, normalTime);
             Console.WriteLine($"Testfall 3: Normal tidpunkt för car är {normalTime[0]}: Trängselskatt = {toll3} kr");
 
